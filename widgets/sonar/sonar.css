@@ -1,0 +1,72 @@
+.content {
+	display: inline-block;
+}
+
+.content h1 {
+	font-size: 45px;
+}
+
+.name-container {
+	width: 100%;
+	display: table;
+	table-layout: fixed;
+}
+
+.icon {
+	display: table-cell;
+	vertical-align: middle;
+	width: 20%;
+}
+
+.icon img {
+	filter: alpha(opacity=60);
+ 	opacity: .6;
+ 	width: 100%;
+	padding: 0 30px 0 30px;
+}
+
+.metrics {
+	display: table-cell;
+	font-size: 42px;
+}
+
+.value  {
+	font-weight: bold;
+	font-size: 62px;
+}
+
+.value-0 {
+	margin-right: 50px;
+	color: #ABB7B7;
+}
+
+.value-1 {
+	margin-right: 50px;
+	color: #5C97BF;
+}
+
+.value-2 {
+	color: #EB9532;
+}
+
+.direction-up {
+	position: absolute;
+	margin-left: 5px;
+	color: #03A678;
+	-moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.direction-down {
+	position: absolute;
+	margin-left: 15px;
+	color: #D64541;
+	-moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}

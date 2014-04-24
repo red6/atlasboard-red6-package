@@ -1,0 +1,32 @@
+{
+  "author": "red6",
+  "name": "atlasboard-red6-package",
+  "description": "red6 package for Atlasboard",
+  "version": "0.0.1",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "async": "0.2.6",
+    "cron": "1.0.1",
+    "cheerio": "0.13.1",
+    "underscore": "1.4.2",
+    "memory-cache": "0.0.5",
+    "moment": "2.6.0"
+  },
+  "devDependencies": {
+    "mocha": "1.8.1",
+    "sinon": "1.9.0"
+  },
+  "engines": {
+    "atlasboard": ">=0.5.6"
+  },
+  "contributors": [
+    {
+      "name": "Jan Stamer",
+      "email": "jan.stamer@red6-es.de"
+    }
+  ]
+}

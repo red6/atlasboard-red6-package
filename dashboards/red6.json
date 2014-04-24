@@ -1,0 +1,66 @@
+{
+  "layout": {
+      "title": false,
+      "customJS" : ["jquery.peity.js"],
+      "widgets" : [
+          {"row" : 1, "col" : 1, "width" : 5, "height" : 1, "widget" : "project-header",      "job" : "project-header", "config": "project-header"},
+          {"row" : 1, "col" : 5, "width" : 1, "height" : 1, "widget" : "datetime",            "job" : "datetime",    "config": "datetime"},
+          {"row" : 2, "col" : 1, "width" : 4, "height" : 2, "widget" : "sonar",               "job" : "sonar",     "config": "sonar"},
+          {"row" : 2, "col" : 4, "width" : 2, "height" : 2, "widget" : "milestone-countdown", "job" : "milestone-countdown",     "config": "milestone-countdown"},
+          {"row" : 3, "col" : 1, "width" : 3, "height" : 2, "widget" : "calendar",            "job" : "google-calendar",     "config": "calendar-holidays"},
+          {"row" : 3, "col" : 3, "width" : 3, "height" : 2, "widget" : "quotes",              "job" : "quotes",              "config": "quotes-famous"}
+     ]
+  },
+
+  "config" : {
+
+    "sonar": {
+        "interval": 6000,
+        "serverUrl": "http://nemo.sonarqube.org",
+        "resource": "org.codehaus.sonar:sonar"
+    },
+
+    "milestone-countdown": {
+        "interval": 60000,
+        "name": "R1",
+        "dueDate": "2014-09-31",
+        "lang": "en"
+    },
+
+    "project-header": {
+        "interval": 100000000,
+        "widgetTitle": "red6",
+        "logo": "/images/humboldt.jpg"
+    },
+
+    "datetime": {
+        "interval": 1000,
+        "lang": "en"
+    },
+
+    "calendar-holidays" : {
+       "interval" : 60000,
+       "calendarUrl" : "https://www.google.com/calendar/ical/ngktmin96hl45bj02g67nm16til2g2lt%40import.calendar.google.com/public/basic.ics",
+       "maxEntries" : 9,
+       "widgetTitle" : "Upcoming Events"
+     },
+
+     "quotes-famous": {
+        "interval" : 60000,
+        "widgetTitle" : "Quote of the Day",
+        "quotes" : [
+            {"quote" : "It's not that I'm so smart, it's just that I stay with problems longer.", "author" : "Albert Einstein"},
+            {"quote" : "Ignorance is the curse of God; knowledge is the wing wherewith we fly to heaven.", "author" : "William Shakespeare"},
+            {"quote" : "Software built on pride and love of subject is superior to software built for profit.", "author" : "Ravi Simhambhatla"},
+            {"quote" : "If developers’ pains are Java and .NET, the antidote is dynamic languages and frameworks.", "author" : "Jeffrey Hammond"},
+            {"quote" : "Software is like sex: it's better when it's free.", "author" : "Linus Torvalds"},
+            {"quote" : "People enjoy the interaction on the Internet, and the feeling of belonging to a group that does something interesting: that's how some software projects are born.", "author" : "Linus Torvalds"},
+            {"quote" : "The ultimate search engine would basically understand everything in the world, and it would always give you the right thing.", "author" : "Larry Page"},
+            {"quote" : "Mathematics is the queen of the sciences and number theory is the queen of mathematics.", "author" : "Carl Friedrich Gauss"},
+            {"quote" : "Computer science is no more about computers than astronomy is about telescopes.", "author" : "Edgar Dijkstra"}
+        ],
+        "limit" : 1
+     }
+
+  }
+}

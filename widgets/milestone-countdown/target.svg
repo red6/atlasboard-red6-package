@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="16px"
+   version="1.1"
+   viewBox="0 0 16 16"
+   width="16px"
+   id="svg2"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="1397663773_519540-077_Location_grey.svg">
+  <metadata
+     id="metadata13">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1364"
+     inkscape:window-height="836"
+     id="namedview11"
+     showgrid="false"
+     inkscape:zoom="1.3037281"
+     inkscape:cx="-130.12611"
+     inkscape:cy="44.953716"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
+  <defs
+     id="defs6" />
+  <g
+     id="Icons with numbers"
+     style="fill:#f9f9f9;fill-rule:evenodd;stroke:none"
+     transform="matrix(10,0,0,10,-105.85029,-104.88141)"
+     inkscape:export-filename="/home/jan/Pictures/icon_target2.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       id="Group"
+       transform="translate(-192,-192)"
+       style="fill:#f9f9f9">
+      <path
+         d="m 201,205.91704 c 2.5125,-0.42151 4.49553,-2.40454 4.91704,-4.91704 L 203,201 l 0,-2 2.91704,0 C 205.49553,196.48749 203.5125,194.50447 201,194.08296 l 0,2.91704 -2,0 0,-2.91704 c -2.5125,0.42151 -4.49553,2.40453 -4.91704,4.91704 l 2.91704,0 0,2 -2.91704,0 c 0.42151,2.5125 2.40454,4.49553 4.91704,4.91704 L 199,203 l 2,0 z M 200,208 c -4.41828,0 -8,-3.58172 -8,-8 0,-4.41828 3.58172,-8 8,-8 4.41828,0 8,3.58172 8,8 0,4.41828 -3.58172,8 -8,8 z m 0,0"
+         id="Oval 163"
+         style="fill:#f9f9f9"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>
