@@ -29,8 +29,8 @@
 
     "project-header": {
         "interval": 100000000,
-        "widgetTitle": "red6",
-        "logo": "/images/humboldt.jpg"
+        "widgetTitle": "red6"
+        // "logo": "/images/humboldt.jpg"
     },
 
     "datetime": {
