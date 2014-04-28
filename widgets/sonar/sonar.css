@@ -26,8 +26,21 @@
 }
 
 .metrics {
+	position: absolute;
 	display: table-cell;
 	font-size: 42px;
+}
+
+.blocker-alert {
+	display: table-cell;
+	font-weight: bold;
+	font-size: 42px;
+	width: 20%;
+}
+
+.value-blocker {
+	color: #CF000F;
+	font-size: 110px;
 }
 
 .value  {
@@ -36,12 +49,12 @@
 }
 
 .value-0 {
-	margin-right: 50px;
+	margin-right: 5px;
 	color: #ABB7B7;
 }
 
 .value-1 {
-	margin-right: 50px;
+	margin-right: 5px;
 	color: #5C97BF;
 }
 
@@ -50,23 +63,9 @@
 }
 
 .direction-up {
-	position: absolute;
-	margin-left: 5px;
 	color: #03A678;
-	-moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
 }
 
 .direction-down {
-	position: absolute;
-	margin-left: 15px;
 	color: #D64541;
-	-moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
 }
