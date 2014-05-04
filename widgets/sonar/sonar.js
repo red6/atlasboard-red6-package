@@ -14,7 +14,7 @@ widget = {
         $('.linesOfCode', el).html(data.linesOfCode.value + directionHmtl(data.linesOfCode));
         $('.technicalDebt', el).html(data.technicalDebt.value + directionHmtl(data.technicalDebt));
 
-        if (data.blockerCount.value) {
+        if (data.blockerCount.value > 0) {
             $('.blockerCount', el).html(data.blockerCount.value + directionHmtl(data.coverage));
             $('.blocker-alert', el).show();
         } else {

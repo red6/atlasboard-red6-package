@@ -1,0 +1,28 @@
+.content {
+	width: 100%;
+}
+
+.build {
+	margin: 0 0 0.5em 0;
+	width: 100%;
+	font-size: 3.1em;
+	padding: 0 0.5em 0 0.5em;
+	width: 100%;
+	border-radius: 5px;
+	line-height: 2.6em;
+	font-weight: bold;
+}
+
+.build-failure {
+	background-color: #CF000F;
+}
+
+.build-success {
+	background-color: #00B16A;
+}
+
+.build-time {
+	font-weight: normal;
+	font-size: 0.7em;
+	float: right;
+}
