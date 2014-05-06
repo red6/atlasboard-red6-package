@@ -13,19 +13,11 @@
 	font-weight: bold;
 }
 
-<<<<<<< HEAD
 .build-failure {
 	background-color: #CF000F;
 }
 
 .build-success {
-=======
-.build-failed {
-	background-color: #CF000F;
-}
-
-.build-successfull {
->>>>>>> 2cbd108a6e7ea728699a46d30d74815b3a8a4221
 	background-color: #00B16A;
 }
 
