@@ -16,7 +16,11 @@ widget = {
 	*/
 		
 		$.each(data.builds, function (index, build) {
+<<<<<<< HEAD
 			html += '<div class="build build-' + build.result + '">' + build.fullName + ' <span class="build-time">' + build.timeAgo + '</span>' + '</div>';
+=======
+			html += '<div class="build build-successfull">' + data.name + '-' + build.number + ' <span class="build-time">2 minutes ago</span>' + '</div>';
+>>>>>>> 2cbd108a6e7ea728699a46d30d74815b3a8a4221
 		});
 
 		$('.content', el).html(html);
