@@ -12,7 +12,12 @@ widget = {
         $('.projectName', el).text(data.projectName);
         $('.coverage', el).html(data.coverage.value + '%' + directionHmtl(data.coverage));
         $('.linesOfCode', el).html(data.linesOfCode.value + directionHmtl(data.linesOfCode));
-        $('.technicalDebt', el).html(data.technicalDebt.value + directionHmtl(data.technicalDebt));
+
+        if (data.technicalDebt) {
+            $('.technicalDebt', el).html(data.technicalDebt.value + directionHmtl(data.technicalDebt));
+        } else {
+            $('#technicalDebt-container').hide();
+        }
 
         if (data.blockerCount.value > 0) {
             $('.blockerCount', el).html(data.blockerCount.value + directionHmtl(data.coverage));

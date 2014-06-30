@@ -1,6 +1,7 @@
 
 module.exports = function (config, dependencies, job_callback) {
     var metricsUrl = config.serverUrl + '/api/resources/?metrics=ncloc,coverage,sqale_index,tests,blocker_violations&resource=' + config.resource;
+    var authorizationHash = config.authorizationHash;
     var logger = dependencies.logger;
     var underscore = dependencies.underscore;
     var moment = dependencies.moment;
@@ -29,6 +30,9 @@ module.exports = function (config, dependencies, job_callback) {
 
     function getTechnicalDebt (metricsData) {
         var metric = getMetric(metricsData, "sqale_index");
+        if (!metric) {
+          return null;
+        }
 
         return {
             value: moment.duration(metric.val, "days").humanize(),
@@ -52,6 +56,10 @@ module.exports = function (config, dependencies, job_callback) {
           "Content-Type": "application/json"
         }
     };
+
+    if (authorizationHash) {
+        options.headers.Authorization = "Basic " + authorizationHash + "==";
+    }
 
     dependencies.easyRequest.JSON(options, function (error, metricsDataSets) {
             if (error) {
