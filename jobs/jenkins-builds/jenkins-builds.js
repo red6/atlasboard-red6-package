@@ -5,7 +5,7 @@ module.exports = function (config, dependencies, job_callback) {
 
 	function getBuildInfos (build, callback) {
         var options = {
-            url: build.url + '/api/json',
+            url: config.serverUrl + '/job/' + config.job + '/' + build.number + '/api/json',
             rejectUnauthorized: false,
             headers: {
                 "Content-Type": "application/json"
