@@ -18,8 +18,13 @@ module.exports = function (config, dependencies, job_callback) {
                 buildTime = buildTime.lang(config.lang)
             }
 
+            var fullName = rawBuildData.fullDisplayName;
+            if (config.removeRegex) {
+                fullName = rawBuildData.fullDisplayName.replace(new RegExp(config.removeRegex), "");
+            }
+
             var buildData = {
-                fullName: rawBuildData.fullDisplayName,
+                fullName: fullName,
                 number: build.number,
                 timeAgo: buildTime.fromNow(),
                 result: rawBuildData.result.toLowerCase()
