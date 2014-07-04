@@ -11,7 +11,7 @@ to import the package as **git submodule** and use any of the widgets and jobs i
 
 See also: [Package-Atlassian](https://bitbucket.org/atlassian/atlasboard/wiki/Package-Atlassian)
 
-## Available jobs/widgets
+## Available Widgets
 
 ### Jenkins
 Shows the latest build results from [Jenkins](http://jenkins-ci.org).
