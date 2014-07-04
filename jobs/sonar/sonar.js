@@ -21,6 +21,9 @@ module.exports = function (config, dependencies, job_callback) {
 
     function getCoverage (metricsData) {
         var metric = getMetric(metricsData, "coverage");
+        if (!metric) {
+          return null;
+        }
 
         return {
             value: metric.val.toFixed(),

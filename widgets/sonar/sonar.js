@@ -10,17 +10,31 @@ widget = {
 	    };
 
         $('.projectName', el).text(data.projectName);
-        $('.coverage', el).html(data.coverage.value + '%' + directionHmtl(data.coverage));
-        $('.linesOfCode', el).html(data.linesOfCode.value + directionHmtl(data.linesOfCode));
+        
+
+        if (data.coverage) {
+            $('#coverage-container').show();
+            $('.coverage', el).html(data.coverage.value + '%' + directionHmtl(data.coverage));
+        } else {
+            $('#coverage-container').hide();
+        }
+
+        if (data.coverage) {
+            $('#linesOfCode-container').show();
+            $('.linesOfCode', el).html(data.linesOfCode.value + directionHmtl(data.linesOfCode));
+        } else {
+            $('#linesOfCode-container').hide();
+        }
 
         if (data.technicalDebt) {
+            $('#technicalDebt-container').show();
             $('.technicalDebt', el).html(data.technicalDebt.value + directionHmtl(data.technicalDebt));
         } else {
             $('#technicalDebt-container').hide();
         }
 
-        if (data.blockerCount.value > 0) {
-            $('.blockerCount', el).html(data.blockerCount.value + directionHmtl(data.coverage));
+        if (data.blockerCount && data.blockerCount.value > 0) {
+            $('.blockerCount', el).html(data.blockerCount.value + directionHmtl(data.blockerCount));
             $('.blocker-alert', el).show();
         } else {
             $('.blocker-alert', el).hide();

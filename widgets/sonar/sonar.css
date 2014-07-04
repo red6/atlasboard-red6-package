@@ -1,21 +1,25 @@
 .content {
+	width: 100%;
 	display: inline-block;
 }
 
+#technicalDebt-container {
+	white-space: nowrap;
+}
+
 .content h1 {
-	font-size: 45px;
+	font-size: 50px;
 }
 
 .name-container {
 	width: 100%;
 	display: table;
-	table-layout: fixed;
 }
 
-.icon {
+.metrics {
+/*	position: absolute; */
 	display: table-cell;
-	vertical-align: middle;
-	width: 20%;
+	font-size: 42px;
 }
 
 .icon img {
@@ -23,12 +27,6 @@
  	opacity: .6;
  	width: 100%;
 	padding: 0 30px 0 30px;
-}
-
-.metrics {
-	position: absolute;
-	display: table-cell;
-	font-size: 42px;
 }
 
 .blocker-alert {

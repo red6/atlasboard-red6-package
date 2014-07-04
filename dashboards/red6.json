@@ -5,10 +5,10 @@
       "widgets" : [
           {"row" : 1, "col" : 1, "width" : 5, "height" : 1, "widget" : "project-header",      "job" : "project-header", "config": "project-header"},
           {"row" : 1, "col" : 5, "width" : 1, "height" : 1, "widget" : "datetime",            "job" : "datetime",    "config": "datetime"},
-          {"row" : 2, "col" : 1, "width" : 4, "height" : 2, "widget" : "sonar",               "job" : "sonar",     "config": "sonar"},
-          {"row" : 2, "col" : 4, "width" : 2, "height" : 2, "widget" : "milestone-countdown", "job" : "milestone-countdown",     "config": "milestone-countdown"},
-          {"row" : 3, "col" : 1, "width" : 3, "height" : 2, "widget" : "jenkins-builds",      "job" : "jenkins-builds",     "config": "jenkins-builds"},
-          {"row" : 3, "col" : 3, "width" : 3, "height" : 2, "widget" : "quotes",              "job" : "quotes",              "config": "quotes-famous"}
+          {"row" : 2, "col" : 1, "width" : 3, "height" : 2, "widget" : "sonar",               "job" : "sonar",     "config": "sonar"},
+          {"row" : 2, "col" : 4, "width" : 3, "height" : 2, "widget" : "jenkins-builds",      "job" : "jenkins-builds",     "config": "jenkins-builds"},
+          {"row" : 3, "col" : 1, "width" : 3, "height" : 1, "widget" : "milestone-countdown", "job" : "milestone-countdown",     "config": "milestone-countdown"},
+          {"row" : 3, "col" : 3, "width" : 3, "height" : 1, "widget" : "quotes",              "job" : "quotes",              "config": "quotes-famous"}
      ]
   },
 
@@ -30,7 +30,8 @@
     "jenkins-builds": {
         "serverUrl": "http://ci.jruby.org",
         "interval": 60000,
-        "job": "jruby-dist-master"
+        "job": "jruby-dist-master",
+        "lang": "en"
     },
 
     "project-header": {

@@ -1,11 +1,14 @@
 <h2>Code Quality</h2>
 <div class="content">
-    <h1 class="projectName"></h1>
+    <div style="display: table; width: 100%;">
+        <span style="display: table-cell;"><h1 class="projectName"></h1></span>
+        <span style="display: table-cell; text-align: right; padding: 5px 10px 10px 0"><img style="opacity: .6;" src="/widgets/resources?resource=red6/sonar/magnifier.png"/></span>
+    </div>
+    
     <div class="name-container">
-         <span class="icon"><img src="/widgets/resources?resource=red6/sonar/magnifier.png"/></span>
          <span class="metrics">
-            <div><span class="coverage value value-0"></span> Testabdeckung</div>
-            <div><span class="linesOfCode value value-1"></span> Zeilen Code</div>
+            <div id="coverage-container"><span class="coverage value value-0"></span> Testabdeckung</div>
+            <div id="linesOfCode-container"><span class="linesOfCode value value-1"></span> Zeilen Code</div>
             <div id="technicalDebt-container">Technical Debt von <span class="technicalDebt value value-2"></span></div>
          </span>
          <span class="blocker-alert"> <span class="blockerCount value-blocker"></span><br/> <span>Blockers</span>
