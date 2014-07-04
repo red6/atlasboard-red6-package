@@ -31,6 +31,8 @@ Shows the latest build results from [Jenkins](http://jenkins-ci.org).
 ### Datetime
 Shows the current time and date.
 
+![](screenshots/datetime.png?raw=true)
+
 #### Configuration
 ```JSON
 "datetime": {
@@ -56,6 +58,9 @@ Shows the following code metrics from [SonarQube](http://www.sonarqube.org):
 ```
 
 ### Milestone Countdown
+Shows the name and remaining time to a project milestone.
+
+![](screenshots/milestone_countdown.png?raw=true)
 
 #### Configuration
 ```JSON
@@ -69,6 +74,8 @@ Shows the following code metrics from [SonarQube](http://www.sonarqube.org):
 
 ### Project Header
 Simple widget to display a project name and logo.
+
+![](screenshots/project_header.png?raw=true)
 
 #### Configuration
 ```JSON
