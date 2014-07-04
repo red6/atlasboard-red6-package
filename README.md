@@ -1,7 +1,7 @@
 Atlasboard red6 Package
 =======================
 
-##Installation##
+## Installation
 
 From the root directory of your **recently created wallboard**, you just need to type:
 
@@ -12,20 +12,6 @@ to import the package as **git submodule** and use any of the widgets and jobs i
 See also: [https://bitbucket.org/atlassian/atlasboard/wiki/Package-Atlassian]()
 
 ## Available jobs/widgets
-
-### Datetime
-
-
-### Milestone Countdown
-
-#### Configuration
-"milestone-countdown": {
-    "interval": 60000,
-    "name": "R1",
-    "dueDate": "2014-09-31",
-    "lang": "en"
-}
-
 
 ### Sonar
 Shows the following code metrics from Sonar:
@@ -41,8 +27,30 @@ Shows the following code metrics from Sonar:
   "resource": "org.codehaus.sonar:sonar"
 }
 
-TODO: Include screenshot that shows where to get the Sonar resource.
+### Jenkins
+Shows the latest build results from [Jenkins](http://jenkins-ci.org).
 
+"jenkins-builds": {
+  "serverUrl": "http://ci.jruby.org",
+  "interval": 60000,
+  "job": "jruby-dist-master",
+  "lang": "en"
+}
+
+
+### Datetime
+
+### Milestone Countdown
+
+#### Configuration
+```JSON
+"milestone-countdown": {
+    "interval": 60000,
+    "name": "R1",
+    "dueDate": "2014-09-31",
+    "lang": "en"
+}
+```
 ### Project Header
 Simple widget to display a project name and logo.
 
