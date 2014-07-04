@@ -13,8 +13,12 @@
 	font-weight: bold;
 }
 
+.build-unstable {
+	background-color: #F39C12;
+}
+
 .build-failure {
-	background-color: #CF000F;
+	background-color: #F22613;
 }
 
 .build-success {
