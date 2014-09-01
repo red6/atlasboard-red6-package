@@ -17,6 +17,10 @@
 	background-color: #F39C12;
 }
 
+.build-aborted {
+    background-color: #F39C12;
+}
+
 .build-failure {
 	background-color: #F22613;
 }
