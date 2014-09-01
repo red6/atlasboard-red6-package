@@ -28,9 +28,9 @@
     },
 
     "jenkins-builds": {
-        "serverUrl": "http://ci.jruby.org",
+        "serverUrl": "https://builds.apache.org/",
         "interval": 60000,
-        "job": "jruby-dist-master",
+        "job": "ActiveMQ",
         "lang": "en"
     },
 
