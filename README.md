@@ -41,6 +41,38 @@ Shows the current time and date.
 },
 ```
 
+### Board Cycle
+Cycles periodically through configured dashboards. After each interval the next board is shown. So you can show the builds dashboard
+for 15 seconds, then the JIRA dashboard for 15 and so on.
+
+You can configure any url as dashboard. You can cycle through dashboards created with atlasboard but you can also integrate
+other dashboards.
+
+The grid position does not matter for the widget as all cycled dashboards will take up the whole browser window.
+
+#### Board and Configuration
+```JSON
+{
+  "layout": {
+    "title": false,
+    "customJS": [],
+    "widgets": [
+      { "row": 1, "col": 1, "width": 6, "height": 4, "widget": "board-cycle", "job": "board-cycle", "config": "board-cycle" }
+    ]
+  },
+
+  "config": {
+    "board-cycle": {
+      "interval": 15000,
+      "boardUrls": [
+        "/red6",
+        "http://www.oxfam.org"
+      ]
+    }
+  }
+}
+```
+
 ### SonarQube
 Shows the following code metrics from [SonarQube](http://www.sonarqube.org):
 * code coverage

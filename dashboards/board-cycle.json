@@ -1,0 +1,19 @@
+{
+    "layout": {
+        "title": false,
+        "customJS": [],
+        "widgets": [
+            { "row": 1, "col": 1, "width": 6, "height": 4, "widget": "board-cycle", "job": "board-cycle", "config": "board-cycle" }
+        ]
+    },
+
+    "config": {
+        "board-cycle": {
+            "interval": 15000,
+            "boardUrls": [
+                "/red6",
+                "http://www.oxfam.org"
+            ]
+        }
+    }
+}
