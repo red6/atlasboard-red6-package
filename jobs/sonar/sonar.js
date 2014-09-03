@@ -61,6 +61,11 @@ module.exports = function (config, dependencies, job_callback) {
     };
 
     if (authorizationHash) {
+//        var options = {
+//            headers: {
+//                'Authorization': 'Basic ' + new Buffer(config.globalAuth[credentials].username + ':' + config.globalAuth[credentials].password).toString('base64')
+//            }
+//        };
         options.headers.Authorization = "Basic " + authorizationHash + "==";
     }
 
