@@ -38,7 +38,7 @@ module.exports = function (config, dependencies, job_callback) {
         }
 
         return {
-            value: moment.duration(metric.val, "days").humanize(),
+            value: moment.duration(metric.val, "minutes").humanize(),
             direction: directionToString(metric.direction)
         };
     };
