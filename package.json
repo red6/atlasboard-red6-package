@@ -14,7 +14,8 @@
     "cheerio": "0.13.1",
     "underscore": "1.4.2",
     "memory-cache": "0.0.5",
-    "moment": "2.6.0"
+    "moment": "2.6.0",
+    "ical": "~0.3.1"
   },
   "devDependencies": {
     "mocha": "1.8.1",

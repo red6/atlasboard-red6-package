@@ -1,3 +1,8 @@
 module.exports = function (config, dependencies, job_callback) {
-    job_callback(null, { title: config.widgetTitle, logo: config.logo });
+    var data = {
+        title: config.widgetTitle,
+        logo: config.logo,
+        lang: config.lang
+    };
+    job_callback(null, data);
 };
