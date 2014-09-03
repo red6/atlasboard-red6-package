@@ -1,6 +1,6 @@
 
 module.exports = function (config, dependencies, job_callback) {
-    var metricsUrl = config.serverUrl + '/api/resources/?metrics=ncloc,coverage,sqale_index,tests,blocker_violations&resource=' + config.resource;
+    var metricsUrl = config.serverUrl + '/api/resources?metrics=ncloc,coverage,sqale_index,tests,blocker_violations&resource=' + config.resource;
     var authorizationHash = config.authorizationHash;
     var logger = dependencies.logger;
     var underscore = dependencies.underscore;
