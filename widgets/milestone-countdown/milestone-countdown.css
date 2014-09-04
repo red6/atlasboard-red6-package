@@ -25,6 +25,7 @@
 }
 
 .dueDate {
+    padding-left: 5px;
 	font-size: 60px;
 	font-weight: bold;
 	color: #E08283;

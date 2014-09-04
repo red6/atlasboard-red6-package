@@ -1,6 +1,6 @@
 
 module.exports = function (config, dependencies, job_callback) {
-    var metricsUrl = config.serverUrl + '/api/resources/?metrics=ncloc,coverage,sqale_index,tests,blocker_violations&resource=' + config.resource;
+    var metricsUrl = config.serverUrl + '/api/resources?metrics=ncloc,coverage,sqale_index,tests,blocker_violations&resource=' + config.resource;
     var authorizationHash = config.authorizationHash;
     var logger = dependencies.logger;
     var underscore = dependencies.underscore;
@@ -38,7 +38,7 @@ module.exports = function (config, dependencies, job_callback) {
         }
 
         return {
-            value: moment.duration(metric.val, "days").humanize(),
+            value: moment.duration(metric.val, "minutes").humanize(),
             direction: directionToString(metric.direction)
         };
     };
@@ -61,6 +61,11 @@ module.exports = function (config, dependencies, job_callback) {
     };
 
     if (authorizationHash) {
+//        var options = {
+//            headers: {
+//                'Authorization': 'Basic ' + new Buffer(config.globalAuth[credentials].username + ':' + config.globalAuth[credentials].password).toString('base64')
+//            }
+//        };
         options.headers.Authorization = "Basic " + authorizationHash + "==";
     }
 
