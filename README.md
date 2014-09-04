@@ -34,7 +34,7 @@ Shows the current time and date.
 ![](screenshots/datetime.png?raw=true)
 
 #### Configuration
-Moment.js needs to included as custom JavaScript in your board configuration. Download [moment-with-locales.min.js](moment-with-locales.min.js)
+Moment.js needs to included as custom JavaScript in your board configuration. Download [moment-with-locales.min.js](http://momentjs.com/downloads/moment-with-locales.min.js)
 and place it in <code>assets/javascript</code>. See sample configuration below.
 
 ```JSON
@@ -88,6 +88,8 @@ Shows the following code metrics from [SonarQube](http://www.sonarqube.org):
 * technical debt (squale index)
 * blocker violations
 * lines of code
+
+![](screenshots/sonar.png?raw=true)
 
 #### Configuration
 ```JSON
