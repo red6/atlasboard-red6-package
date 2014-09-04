@@ -34,11 +34,19 @@ Shows the current time and date.
 ![](screenshots/datetime.png?raw=true)
 
 #### Configuration
+Moment.js needs to included as custom JavaScript in your board configuration. Download [moment-with-locales.min.js](moment-with-locales.min.js)
+and place it in <code>assets/javascript</code>. See sample configuration below.
+
 ```JSON
-"datetime": {
-  "interval": 1000,
-  "lang": "en"
-},
+  "layout": {
+    "customJS" : ["moment-with-locales.min.js"],
+  },
+  "config" : {
+    "datetime": {
+      "interval": 1000,
+      "lang": "en"
+    }
+  }
 ```
 
 ### Board Cycle

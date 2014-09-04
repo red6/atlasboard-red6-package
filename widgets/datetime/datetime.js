@@ -1,22 +1,37 @@
 widget = {
 	//runs when we receive data from the job
 	onData: function (el, data) {
+        try {
+            moment();
+        } catch (e) {
+          console && console.log('ERROR: Moment.js not defined. Please add "moment-with-locales.min.js" as "customJS" to your board.');
+          return;
+        }
 
-		function refreshDate() {
-			if (data.hour !== undefined && data !== undefined) {
-				var d = new Date();
-				var colonClass = 'time-colon time-colon-' + (d.getSeconds() % 2);
-				var colon = '<span class="' + colonClass + '">:</span>';
-				$('.content', el).html(
-						'<div class="clock-time">' + data.hour + colon + data.minutes + '</div>'
-								+ '<div class="clock-date"><br>'
-								+ data.dateStr
-								+ '</div>'
-				);	
-			}
-		}
+        if (!$.data(el, "datetime-initialized")) {
+            var updateTime = function () {
+                var template = _.template($('.template', el).html());
 
-		refreshDate();
+                // UTC Time
+                var time = moment().add(new Date().getTimezoneOffset(), 'minutes');
+
+                // Add difference to UTC if set correctly
+                if (data.differenceUTC && _.isNumber(data.differenceUTC)) {
+                    time = time.add(data.differenceUTC, 'hours');
+                }
+
+                var datetimeData = {
+                    time: time.lang(data.lang).format('HH:mm'),
+                    date: moment().lang(data.lang).format('L')
+                };
+
+                $('.content', el).html(template(datetimeData));
+            };
+            setInterval(updateTime, (10 * 1000));
+            updateTime();
+            $.data(el, "datetime-initialized", true);
+        }
+
 	},
 	onError: function (el, data) {
 		var $error = $('<div class="container"><img src="images/warning.png"></div>');

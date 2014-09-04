@@ -1,14 +1,15 @@
 .content {
-	font-size: 100px;
+	font-size: 115px;
 	color: #8E44AD;
 	font-weight: bold;
-	text-align: right;
+	text-align: center;
 	display: inline-block;
-	margin-left: 10px;
+    line-height: 1em;
 	float: right;
 }
 
 .clock-date {
+    line-height: 1em;
 	margin-top: 10px;
 	text-align: center;
 	color: #BE90D4;
@@ -27,5 +28,4 @@
 
 .clock-date {
 	font-size: 0.5em;
-	margin-top: -80px;
 }
