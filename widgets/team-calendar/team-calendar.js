@@ -7,8 +7,16 @@ widget = {
             var updateTime = function () {
                 var template = _.template($('.template-header', el).html());
 
+                // UTC Time
+                var time = moment().add(new Date().getTimezoneOffset(), 'minutes');
+
+                // Add difference to UTC if set correctly
+                if (data.differenceUTC && _.isNumber(data.differenceUTC)) {
+                    time = time.add(data.differenceUTC, 'hours');
+                }
+
                 var headerData = {
-                    time: moment().format('HH:mm'),
+                    time: time.format('HH:mm'),
                     week: moment().format('WW')
                 };
 

@@ -39,6 +39,7 @@ module.exports = function (config, dependencies, job_callback) {
     var data = {
         title: config.widgetTitle,
         lang: config.lang,
+        differenceUTC: config.differenceUTC,
         days: days
     };
     job_callback(null, data);
