@@ -54,7 +54,8 @@ Cycles periodically through configured dashboards. After each interval the next 
 for 15 seconds, then the JIRA dashboard for 15 and so on.
 
 You can configure any url as dashboard. You can cycle through dashboards created with atlasboard but you can also integrate
-other dashboards.
+other dashboards. To show external urls you need to disable web security in the browser. In chrome or chromium you can do this
+by starting chrome with <code>google-chrome --disable-web-security</code>.
 
 The grid position does not matter for the widget as all cycled dashboards will take up the whole browser window.
 
