@@ -97,7 +97,7 @@ Shows the following code metrics from [SonarQube](http://www.sonarqube.org):
   "interval": 6000,
   "serverUrl": "http://nemo.sonarqube.org",
   "resource": "org.codehaus.sonar:sonar",
-  "authorizationHash": "-- Your HTTP Basic hash --"
+  "credentials": "sonar" // Reference to globalAuth.json
 }
 ```
 

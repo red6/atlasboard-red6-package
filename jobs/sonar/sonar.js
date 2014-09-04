@@ -1,7 +1,7 @@
 
 module.exports = function (config, dependencies, job_callback) {
     var metricsUrl = config.serverUrl + '/api/resources?metrics=ncloc,coverage,sqale_index,tests,blocker_violations&resource=' + config.resource;
-    var authorizationHash = config.authorizationHash;
+    var credentials = config.credentials;
     var logger = dependencies.logger;
     var underscore = dependencies.underscore;
     var moment = dependencies.moment;
@@ -60,13 +60,9 @@ module.exports = function (config, dependencies, job_callback) {
         }
     };
 
-    if (authorizationHash) {
-//        var options = {
-//            headers: {
-//                'Authorization': 'Basic ' + new Buffer(config.globalAuth[credentials].username + ':' + config.globalAuth[credentials].password).toString('base64')
-//            }
-//        };
-        options.headers.Authorization = "Basic " + authorizationHash + "==";
+    if (config.globalAuth && config.globalAuth[credentials] && config.globalAuth[credentials].username && config.globalAuth[credentials].password) {
+        var authorizationHash = new Buffer(config.globalAuth[credentials].username + ':' + config.globalAuth[credentials].password).toString('base64');
+        options.headers.Authorization = 'Basic ' + authorizationHash;
     }
 
     dependencies.easyRequest.JSON(options, function (error, metricsDataSets) {
