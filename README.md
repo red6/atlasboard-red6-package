@@ -126,5 +126,5 @@ Simple widget to display a project name and logo.
     "logo": "/images/logo.png"
 }
 ```
-To show a logo put the image in the folder `assets/images` of your atlasboard project. Then you can configure the path
+Put the image in the folder `assets/images` of your atlasboard project. Then you can configure the path
 to your logo. Given the logo image is at `assets/images/logo.png` then you show it by configuring the path `/images/logo.png`.
