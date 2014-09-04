@@ -12,11 +12,6 @@ widget = {
                     week: moment().format('WW')
                 };
 
-                for (i = 1; i < 6; i++) {
-                    var day = moment().day(i);
-//                    console.log(day.lang(data.lang).format('L'));
-                }
-
                 $('.header', el).html(template(headerData));
             };
             setInterval(updateTime, (10 * 1000));

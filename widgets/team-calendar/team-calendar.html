@@ -2,8 +2,9 @@
 <div class="calendar"></div>
 <script type="text/html" class="template-calendar">
     <div class="team-calendar-container">
+        <% _.each(days, function (day) { %>
         <div class="day">
-            <div class="day-header">Montag <small>31.12.</small></div>
+            <div class="day-header"><%= day.name %> <small><%= day.date %></small></div>
 
             <div class="event-allday">
                 Jan Urlaub
@@ -19,55 +20,7 @@
                 Daily Scrum
             </div>
         </div>
-        <div class="day day-today">
-            <div class="day-header">Dienstag <small>31.12.</small></div>
-
-            <div class="event-allday">
-                Jan Urlaub
-            </div>
-            <div class="event-allday">
-                Jan Urlaub
-            </div>
-            <div class="event-allday">
-                Jan Urlaub
-            </div>
-            <div class="event-allday">
-                Norbert Home Office
-            </div>
-
-            <div class="event-separator"></div>
-
-            <div class="event">
-                11:30 Uhr<br/>
-                Daily Scrum
-            </div>
-            <div class="event">
-                11:30 Uhr<br/>
-                Daily Scrum
-            </div>
-            <div class="event">
-                11:30 Uhr<br/>
-                Daily Scrum
-            </div>
-            <div class="event">
-                11:30 Uhr - 12:30 Uhr<br/>
-                Daily Scrum
-            </div>
-            <div class="event">
-                11:30 Uhr<br/>
-                Daily Scrum
-            </div>
-        </div>
-        <div class="day">
-            <div class="day-header">Mittwoch <small>31.12.</small></div>
-        </div>
-        <div class="day">
-            <div class="day-header">Donnerstag <small>31.12.</small></div>
-        </div>
-        <div class="day day-today">
-            <div class="day-header">Freitag <small>31.12.</small></div>
-        </div>
-    </div>
+        <% }); %>
 </script>
 <script type="text/html" class="template-header">
    <span class="week">Woche <%= week %></span> <span class="time"><%= time %> Uhr</span>
