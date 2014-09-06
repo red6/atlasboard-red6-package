@@ -6,19 +6,23 @@
         <div class="day">
             <div class="day-header"><%= day.name %> <small><%= day.date %></small></div>
 
+            <!--
             <div class="event-allday">
-                Jan Urlaub
+                --
             </div>
             <div class="event-allday">
-                Norbert Home Office
+                --
             </div>
 
             <div class="event-separator"></div>
+            -->
 
+            <% _.each(day.events, function (event) { %>
             <div class="event">
-                11:30 Uhr<br/>
-                Daily Scrum
+                <%= event.startTime %> - <%= event.endTime %> Uhr<br/>
+                <%= event.summary %>
             </div>
+            <% }); %>
         </div>
         <% }); %>
 </script>
