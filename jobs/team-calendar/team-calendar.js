@@ -1,5 +1,6 @@
 var ical = require('ical'),
     _ = require('underscore'),
+    RRule = require('rrule').RRule,
     moment = require('moment');
 
 module.exports = function (config, dependencies, job_callback) {
@@ -13,7 +14,9 @@ module.exports = function (config, dependencies, job_callback) {
             name: weekDay.lang(config.lang).format('dddd'),
             date: weekDay.lang(config.lang).format('L'),
             dateMoment: weekDay,
-            events: []
+            events: [],
+            allDayEvents: [],
+            recurringEvents: []
         };
         days.push(day);
     }
@@ -25,8 +28,14 @@ module.exports = function (config, dependencies, job_callback) {
             return;
         }
 
-        var firstDayOfTheWeek = days[0].dateMoment.toDate();
-        var lastDayOfTheWeek = days[4].dateMoment.toDate();
+        var firstDayOfTheWeekMoment = days[0].dateMoment;
+        var firstDayOfTheWeek = firstDayOfTheWeekMoment.toDate();
+
+        var lastDayOfTheWeekMoment = days[days.length - 1].dateMoment;
+        var lastDayOfTheWeek = lastDayOfTheWeekMoment.toDate();
+
+        var firstDayNextWeekMoment = moment(lastDayOfTheWeekMoment).add(1, 'day');
+        var firstDayNextWeek = firstDayNextWeekMoment.toDate();
 
         var eventsOfTheWeek = _.filter(data, function(event) {
             return event.end >= firstDayOfTheWeek && event.start <= lastDayOfTheWeek;
@@ -35,13 +44,53 @@ module.exports = function (config, dependencies, job_callback) {
         _.each(eventsOfTheWeek, function(event) {
             _.each(days, function (day) {
                 var dayOfWeek = day.dateMoment.toDate().getDay();
-                if (event.start.getDay() <= dayOfWeek && dayOfWeek <= event.end.getDay()) {
-                    day.events.push({
+                if (event.start.getDay() <= dayOfWeek
+                    && dayOfWeek <= event.end.getDay()) {
+
+                    var calendarEvent = {
                         startTime: moment(event.start).format('HH:mm'),
                         endTime: moment(event.end).format('HH:mm'),
                         summary: event.summary
-                    });
+                    };
+
+
+                    if (calendarEvent.startTime === calendarEvent.endTime
+                        && calendarEvent.startTime === '00:00') {
+                        if (moment(event.end).format('L') !== day.date) {
+                            day.allDayEvents.push(calendarEvent);
+                        }
+                    } else {
+                        day.events.push(calendarEvent);
+                    }
                 }
+            });
+        });
+
+
+        _.each(_.filter(data, function (event) { return event.rrule; }), function(event) {
+            var rrule = event.rrule;
+
+            // INFO: There's a bug in ical.js that the start date is not honored.
+            //       Until that's fixed we have to set the start manually.
+            //       See https://github.com/peterbraden/ical.js/issues/45
+            rrule.options.dtstart = event.start;
+
+            var firstDayNextWeekMoment = moment(lastDayOfTheWeekMoment).add(1, 'day');
+
+            var rruleEventsThisWeek = rrule.between(firstDayOfTheWeekMoment.toDate(), firstDayNextWeekMoment.toDate());
+
+            _.each(rruleEventsThisWeek, function (rruleEventThisWeek) {
+                _.each(days, function (day){
+                        var rruleEventDate = moment(rruleEventThisWeek).lang(config.lang).format('L');
+                        if (rruleEventDate == day.date) {
+                            day.events.push({
+                                startTime: moment(event.start).format('HH:mm'),
+                                endTime: moment(event.end).format('HH:mm'),
+                                summary: event.summary
+                            });
+                        }
+                    }
+                )
             });
         });
 

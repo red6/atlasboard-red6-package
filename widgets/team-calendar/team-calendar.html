@@ -6,16 +6,15 @@
         <div class="day">
             <div class="day-header"><%= day.name %> <small><%= day.date %></small></div>
 
-            <!--
+            <% _.each(day.allDayEvents, function (event) { %>
             <div class="event-allday">
-                --
+                <%= event.summary %>
             </div>
-            <div class="event-allday">
-                --
-            </div>
+            <% }); %>
 
+            <% if (day.allDayEvents && day.allDayEvents.length > 0) { %>
             <div class="event-separator"></div>
-            -->
+            <% }; %>
 
             <% _.each(day.events, function (event) { %>
             <div class="event">
