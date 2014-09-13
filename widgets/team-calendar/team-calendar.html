@@ -7,7 +7,7 @@
             <div class="day-header"><%= day.name %> <small><%= day.date %></small></div>
 
             <% _.each(day.allDayEvents, function (event) { %>
-            <div class="event-allday">
+            <div class="event-allday" style="background-color: <%= event.color %>">
                 <%= event.summary %>
             </div>
             <% }); %>
@@ -17,7 +17,7 @@
             <% }; %>
 
             <% _.each(day.events, function (event) { %>
-            <div class="event">
+            <div class="event" style="background-color: <%= event.color %>">
                 <%= event.startTime %> - <%= event.endTime %> Uhr<br/>
                 <%= event.summary %>
             </div>

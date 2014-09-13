@@ -6,8 +6,24 @@ var ical = require('ical'),
 module.exports = function (config, dependencies, job_callback) {
     var logger = dependencies.logger;
 
+    var colors = ['#22313F', '#1E824C', '#6C7A89', '#D35400', '#26A65B', '#1F3A93', '#34495E', '#4B77BE', '#67809F', '#674172', '#96281B'];
+
+    var hashCode = function (str) {
+        var hash = 0;
+        for (var i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        return hash;
+    };
+
+    var stringToColour = function(str) {
+        var hash = hashCode(str);
+        var index = Math.abs(hash) % colors.length;
+        return colors[index];
+    };
+
     var days = [];
-    for (i = 1; i < 6; i++) {
+    for (var i = 1; i < 6; i++) {
         var weekDay = moment().day(i).hours(0).minutes(0).seconds(0).milliseconds(0);
 
         var day = {
@@ -50,7 +66,8 @@ module.exports = function (config, dependencies, job_callback) {
                     var calendarEvent = {
                         startTime: moment(event.start).format('HH:mm'),
                         endTime: moment(event.end).format('HH:mm'),
-                        summary: event.summary
+                        summary: event.summary,
+                        color: stringToColour(event.summary)
                     };
 
 
@@ -86,12 +103,21 @@ module.exports = function (config, dependencies, job_callback) {
                             day.events.push({
                                 startTime: moment(event.start).format('HH:mm'),
                                 endTime: moment(event.end).format('HH:mm'),
-                                summary: event.summary
+                                summary: event.summary,
+                                color: stringToColour(event.summary)
                             });
                         }
                     }
                 )
             });
+        });
+
+        // Sort events by start time
+        _.each(days, function (day) {
+           day.events = _.sortBy(day.events, function (event) {
+              var startMoment = moment(event.startTime, 'HH:mm');
+              return startMoment.hours() * 1000 + startMoment.minutes();
+           });
         });
 
         var data = {
