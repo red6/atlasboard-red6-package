@@ -22,6 +22,11 @@ module.exports = function (config, dependencies, job_callback) {
         return colors[index];
     };
 
+    var isAllDay = function (calendarEvent) {
+        return calendarEvent.startTime === calendarEvent.endTime
+               && calendarEvent.startTime === '00:00'
+    };
+
     var days = [];
     for (var i = 1; i < 6; i++) {
         var weekDay = moment().day(i).hours(0).minutes(0).seconds(0).milliseconds(0);
@@ -50,8 +55,7 @@ module.exports = function (config, dependencies, job_callback) {
         var lastDayOfTheWeekMoment = days[days.length - 1].dateMoment;
         var lastDayOfTheWeek = lastDayOfTheWeekMoment.toDate();
 
-        var firstDayNextWeekMoment = moment(lastDayOfTheWeekMoment).add(1, 'day');
-        var firstDayNextWeek = firstDayNextWeekMoment.toDate();
+        var firstDayNextWeekMoment = lastDayOfTheWeekMoment.clone().add(1, 'day');
 
         var eventsOfTheWeek = _.filter(data, function(event) {
             return event.end >= firstDayOfTheWeek && event.start <= lastDayOfTheWeek;
@@ -70,10 +74,8 @@ module.exports = function (config, dependencies, job_callback) {
                         color: stringToColour(event.summary)
                     };
 
-
-                    if (calendarEvent.startTime === calendarEvent.endTime
-                        && calendarEvent.startTime === '00:00') {
-                        if (moment(event.end).format('L') !== day.date) {
+                    if (isAllDay(calendarEvent)) {
+                        if (!moment(event.end).isSame(day.dateMoment, 'day')) {
                             day.allDayEvents.push(calendarEvent);
                         }
                     } else {
@@ -83,7 +85,6 @@ module.exports = function (config, dependencies, job_callback) {
             });
         });
 
-
         _.each(_.filter(data, function (event) { return event.rrule; }), function(event) {
             var rrule = event.rrule;
 
@@ -92,20 +93,26 @@ module.exports = function (config, dependencies, job_callback) {
             //       See https://github.com/peterbraden/ical.js/issues/45
             rrule.options.dtstart = event.start;
 
-            var firstDayNextWeekMoment = moment(lastDayOfTheWeekMoment).add(1, 'day');
-
             var rruleEventsThisWeek = rrule.between(firstDayOfTheWeekMoment.toDate(), firstDayNextWeekMoment.toDate());
 
             _.each(rruleEventsThisWeek, function (rruleEventThisWeek) {
                 _.each(days, function (day){
-                        var rruleEventDate = moment(rruleEventThisWeek).lang(config.lang).format('L');
-                        if (rruleEventDate == day.date) {
-                            day.events.push({
+                        var rruleEventDate = moment(rruleEventThisWeek);
+                        if (rruleEventDate.isSame(day.dateMoment, 'day')) {
+                            var calendarEvent = {
                                 startTime: moment(event.start).format('HH:mm'),
                                 endTime: moment(event.end).format('HH:mm'),
                                 summary: event.summary,
                                 color: stringToColour(event.summary)
-                            });
+                            };
+
+                            if (isAllDay(calendarEvent)) {
+                                if (!moment(event.end).isSame(day.dateMoment, 'day')) {
+                                    day.allDayEvents.push(calendarEvent);
+                                }
+                            } else {
+                                day.events.push(calendarEvent);
+                            }
                         }
                     }
                 )
