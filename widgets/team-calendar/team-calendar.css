@@ -26,6 +26,12 @@
     font-weight: bold;
 }
 
+.time {
+    font-size: 33px;
+    color: #ffffff;
+    opacity: 0.6;
+}
+
 .day-header {
     text-align: center;
     font-size: 42px;
@@ -58,7 +64,7 @@
     color: #ffffff;
     background-color: #555500;
     border-radius: 5px;
-    padding: 8px;
+    padding: 5px;
     margin-top: 10px;
 }
 
@@ -66,7 +72,7 @@
     color: #ffffff;
     background-color: saddlebrown;
     border-radius: 5px;
-    padding: 8px;
+    padding: 5px;
     margin-top: 10px;
 }
 

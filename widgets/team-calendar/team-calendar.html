@@ -18,7 +18,7 @@
 
             <% _.each(day.events, function (event) { %>
             <div class="event" style="background-color: <%= event.color %>">
-                <%= event.startTime %> - <%= event.endTime %> Uhr<br/>
+                <span class="time"><%= event.startTime %> - <%= event.endTime %> Uhr</span><br/>
                 <%= event.summary %>
             </div>
             <% }); %>
