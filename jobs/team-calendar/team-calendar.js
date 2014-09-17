@@ -1,6 +1,6 @@
 var ical = require('ical'),
     _ = require('underscore'),
-    RRule = require('rrule').RRule,
+//    RRule = require('rrule').RRule,
     moment = require('moment');
 
 module.exports = function (config, dependencies, job_callback) {
