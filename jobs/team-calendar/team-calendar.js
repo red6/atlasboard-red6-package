@@ -2,31 +2,32 @@ var ical = require('ical'),
     _ = require('underscore'),
     moment = require('moment');
 
+var colors = ['#22313F', '#1E824C', '#6C7A89', '#D35400', '#26A65B', '#1F3A93', '#34495E', '#4B77BE', '#67809F', '#674172', '#96281B'];
+
+var hashCode = function (str) {
+    var hash = 0;
+    for (var i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return hash;
+};
+
+var stringToColour = function(str) {
+    var hash = hashCode(str);
+    var index = Math.abs(hash) % colors.length;
+    return colors[index];
+};
+
+var isAllDay = function (calendarEvent) {
+    return calendarEvent.startTime === calendarEvent.endTime
+        && calendarEvent.startTime === '00:00'
+};
+
 module.exports = function (config, dependencies, job_callback) {
     var logger = dependencies.logger;
 
-    var colors = ['#22313F', '#1E824C', '#6C7A89', '#D35400', '#26A65B', '#1F3A93', '#34495E', '#4B77BE', '#67809F', '#674172', '#96281B'];
-
-    var hashCode = function (str) {
-        var hash = 0;
-        for (var i = 0; i < str.length; i++) {
-            hash = str.charCodeAt(i) + ((hash << 5) - hash);
-        }
-        return hash;
-    };
-
-    var stringToColour = function(str) {
-        var hash = hashCode(str);
-        var index = Math.abs(hash) % colors.length;
-        return colors[index];
-    };
-
-    var isAllDay = function (calendarEvent) {
-        return calendarEvent.startTime === calendarEvent.endTime
-               && calendarEvent.startTime === '00:00'
-    };
-
     var days = [];
+    var today = moment();
     for (var i = 1; i < 6; i++) {
         var weekDay = moment().day(i).hours(0).minutes(0).seconds(0).milliseconds(0);
 
@@ -36,7 +37,8 @@ module.exports = function (config, dependencies, job_callback) {
             dateMoment: weekDay,
             events: [],
             allDayEvents: [],
-            recurringEvents: []
+            recurringEvents: [],
+            isToday: today.isSame(weekDay, 'day')
         };
         days.push(day);
     }

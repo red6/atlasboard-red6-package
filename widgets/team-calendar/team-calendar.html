@@ -3,7 +3,7 @@
 <script type="text/html" class="template-calendar">
     <div class="team-calendar-container">
         <% _.each(days, function (day) { %>
-        <div class="day">
+        <div class="day <% if (day.isToday) { %>today<% } %>">
             <div class="day-header"><%= day.name %> <small><%= day.date %></small></div>
 
             <% _.each(day.allDayEvents, function (event) { %>
