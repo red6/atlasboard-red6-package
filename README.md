@@ -49,6 +49,39 @@ and place it in <code>assets/javascript</code>. See sample configuration below.
   }
 ```
 
+### Team Calendar
+Shows a calendar of the current working week. A dashboard showing the calender should show no other
+widget as the calendar needs the full space to be displayed propertly.
+
+![](screenshots/team_calendar.png?raw=true)
+
+#### Configuration
+Moment.js needs to included as custom JavaScript in your board configuration. Download [moment-with-locales.min.js](http://momentjs.com/downloads/moment-with-locales.min.js)
+and place it in <code>assets/javascript</code>. See sample configuration below.
+
+```JSON
+{
+  "layout": {
+      "title": false,
+      "customJS" : ["moment-with-locales.min.js"],
+      "widgets" : [
+          {"row" : 1, "col" : 1, "width" : 6, "height" : 4, "widget" : "team-calendar", "job" : "team-calendar", "config": "team-calendar" }
+     ]
+  },
+
+  "config" : {
+
+      "team-calendar": {
+          "calendarUrl": "http://mars/calendar.ics",
+          "interval": 1000,
+          "differenceUTC": 2,
+          "lang": "de"
+      }
+  }
+}
+```
+
+
 ### Board Cycle
 Cycles periodically through configured dashboards. After each interval the next board is shown. So you can show the builds dashboard
 for 15 seconds, then the JIRA dashboard for 15 and so on.
