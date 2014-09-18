@@ -2,6 +2,7 @@ widget = {
     //runs when we receive data from the job
     onData: function (el, data) {
         $(".widget-container").css("height", "100%");
+        $("li", $("ul", $("#widgets-container"))).css("padding", "0");
 
         if (!$.data(el, "team-calendar-initialized")) {
             var updateTime = function () {
@@ -15,12 +16,12 @@ widget = {
                     time = time.add(data.differenceUTC, 'hours');
                 }
 
-                var headerData = {
+                var calendarInfoData = {
                     time: time.format('HH:mm'),
                     week: moment().format('WW')
                 };
 
-                $('.header', el).html(template(headerData));
+                $('.calendar-info', el).html(template(calendarInfoData));
             };
             setInterval(updateTime, (10 * 1000));
             updateTime();
