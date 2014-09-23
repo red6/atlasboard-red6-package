@@ -1,3 +1,7 @@
+.calendar {
+    height: 100%;
+}
+
 .calendar-info {
     position: absolute;
     z-index: 1000;
@@ -14,6 +18,7 @@
 
 .day {
     color: #ABB7B7;
+    height: 100%;
 }
 
 .team-calendar-container {
