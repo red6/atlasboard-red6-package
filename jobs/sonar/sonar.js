@@ -3,7 +3,7 @@ module.exports = function (config, dependencies, job_callback) {
     var metricsUrl = config.serverUrl + '/api/resources?metrics=ncloc,coverage,sqale_index,tests,blocker_violations&resource=' + config.resource;
     var credentials = config.credentials;
     var logger = dependencies.logger;
-    var underscore = dependencies.underscore;
+    var _ = dependencies.underscore;
     var moment = dependencies.moment;
 
     function formatWithThousandSeparator (obj){
@@ -12,11 +12,15 @@ module.exports = function (config, dependencies, job_callback) {
     };
 
     function getMetric (metricsData, key) {
-        return underscore.first(underscore.where(metricsData.msr, {key: key}))
+        return _.first(_.where(metricsData.msr, {key: key}))
     };
 
     function directionToString(direction) {
-        return direction && 'up' || 'down';
+        if (_.isNaN(direction)) {
+            return direction && 'up' || 'down';
+        } else {
+            return undefined;
+        }
     };
 
     function getCoverage (metricsData) {
@@ -72,7 +76,7 @@ module.exports = function (config, dependencies, job_callback) {
                 return job_callback(err_msg);
             }
 
-            var metricsData = underscore.first(metricsDataSets);
+            var metricsData = _.first(metricsDataSets);
 
             var data = { 
                 projectName: metricsData.name,

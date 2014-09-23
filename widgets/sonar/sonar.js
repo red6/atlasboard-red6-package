@@ -1,7 +1,11 @@
 widget = {
 	onData: function (el, data) {
 
-		function directionHmtl (obj){
+		function directionHtml (obj) {
+            if (!obj.direction) {
+                return '';
+            }
+
             if (obj.direction === 'up') {
                 return '<span class="direction-up">&#8593;</span>';
             } else {                
@@ -14,27 +18,27 @@ widget = {
 
         if (data.coverage) {
             $('#coverage-container').show();
-            $('.coverage', el).html(data.coverage.value + '%' + directionHmtl(data.coverage));
+            $('.coverage', el).html(data.coverage.value + '%' + directionHtml(data.coverage));
         } else {
             $('#coverage-container').hide();
         }
 
         if (data.coverage) {
             $('#linesOfCode-container').show();
-            $('.linesOfCode', el).html(data.linesOfCode.value + directionHmtl(data.linesOfCode));
+            $('.linesOfCode', el).html(data.linesOfCode.value + directionHtml(data.linesOfCode));
         } else {
             $('#linesOfCode-container').hide();
         }
 
         if (data.technicalDebt) {
             $('#technicalDebt-container').show();
-            $('.technicalDebt', el).html(data.technicalDebt.value + directionHmtl(data.technicalDebt));
+            $('.technicalDebt', el).html(data.technicalDebt.value + directionHtml(data.technicalDebt));
         } else {
             $('#technicalDebt-container').hide();
         }
 
         if (data.blockerCount && data.blockerCount.value > 0) {
-            $('.blockerCount', el).html(data.blockerCount.value + directionHmtl(data.blockerCount));
+            $('.blockerCount', el).html(data.blockerCount.value + directionHtml(data.blockerCount));
             $('.blocker-alert', el).show();
         } else {
             $('.blocker-alert', el).hide();
