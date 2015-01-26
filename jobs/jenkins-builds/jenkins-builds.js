@@ -44,6 +44,8 @@ module.exports = function (config, dependencies, job_callback) {
 
     var jenkinsJobUrl = config.serverUrl + '/job/' + config.job + '/api/json'
 
+    var numberOfJobs = config.numberOfJobs || 3;
+
     var options = {
         url: jenkinsJobUrl,
         rejectUnauthorized: false,
@@ -59,7 +61,7 @@ module.exports = function (config, dependencies, job_callback) {
             	return job_callback(err_msg);
             }
 
-            var lastBuilds = jobData.builds.slice(0, Math.min(3, jobData.builds.length));
+            var lastBuilds = jobData.builds.slice(0, Math.min(numberOfJobs, jobData.builds.length));
 
             async.map(lastBuilds, getBuildInfos, function (err, lastBuildsInfos) {
 	            var data = {
