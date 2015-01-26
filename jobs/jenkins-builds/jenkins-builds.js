@@ -1,7 +1,8 @@
 module.exports = function (config, dependencies, job_callback) {
 	var async = require('async');
-    var logger = dependencies.logger;
-    var moment = dependencies.moment;
+  var logger = dependencies.logger;
+  var moment = dependencies.moment;
+  var _ = dependencies.underscore;
 
 	function getBuildInfos (build, callback) {
         var options = {
@@ -20,7 +21,14 @@ module.exports = function (config, dependencies, job_callback) {
 
             var fullName = rawBuildData.fullDisplayName;
             if (config.removeRegex) {
-                fullName = rawBuildData.fullDisplayName.replace(new RegExp(config.removeRegex), "");
+                if (_.isArray(config.removeRegex)) {
+                    _.each(config.removeRegex, function (singleRemoveRegex) {
+                        fullName = fullName.replace(new RegExp(singleRemoveRegex), "");
+                    });
+
+                } else {
+                    fullName = rawBuildData.fullDisplayName.replace(new RegExp(config.removeRegex), "");
+                }
             }
 
             var buildData = {
