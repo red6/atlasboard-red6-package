@@ -1,0 +1,28 @@
+[
+  {
+    "id": "anIncidentId",
+    "processDefinitionId": "aProcDefId",
+    "processInstanceId": "aProcInstId",
+    "executionId": "anExecutionId",
+    "incidentTimestamp": "2014-03-01T08:00:00",
+    "incidentType": "failedJob",
+    "activityId": "serviceTask",
+    "causeIncidentId": "aCauseIncidentId",
+    "rootCauseIncidentId": "aRootCauseIncidentId",
+    "configuration": "aConfiguration",
+    "incidentMessage": "anIncidentMessage"
+  },
+  {
+    "id": "anIncidentId",
+    "processDefinitionId": "aProcDefId",
+    "processInstanceId": "aProcInstId",
+    "executionId": "anotherExecutionId",
+    "incidentTimestamp": "2014-03-01T09:00:00",
+    "incidentType": "customIncidentType",
+    "activityId": "userTask",
+    "causeIncidentId": "anotherCauseIncidentId",
+    "rootCauseIncidentId": "anotherRootCauseIncidentId",
+    "configuration": "anotherConfiguration",
+    "incidentMessage": "anotherIncidentMessage"
+  }
+]
