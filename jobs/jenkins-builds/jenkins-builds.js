@@ -34,9 +34,12 @@ module.exports = function (config, dependencies, job_callback) {
             var buildData = {
                 fullName: fullName,
                 number: build.number,
-                timeAgo: buildTime.fromNow(),
-                result: rawBuildData.result.toLowerCase()
+                timeAgo: buildTime.fromNow()
             };
+
+            if (rawBuildData.result) {
+              buildData.result = rawBuildData.result.toLowerCase()
+            }
 
             callback(null, buildData);
         });
