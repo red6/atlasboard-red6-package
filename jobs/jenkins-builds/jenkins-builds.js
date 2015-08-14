@@ -12,7 +12,12 @@ module.exports = function (config, dependencies, job_callback) {
                 "Content-Type": "application/json"
             }
         };
-        
+
+        // Optional proxy configuration
+        if (config.proxy) {
+          options.proxy = config.proxy;
+        }
+
         dependencies.easyRequest.JSON(options, function (error, rawBuildData) {
             var buildTime = moment(rawBuildData.timestamp);
             if (config.lang) {
