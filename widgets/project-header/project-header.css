@@ -1,24 +1,24 @@
 .content {
-	font-size: 160px;
-	letter-spacing: 20px;
-	color: inherit;
-	font-weight: bold;
-	text-align: right;
-	display: inline-block;
-	width: 100%;
+    font-size: 160px;
+    letter-spacing: 20px;
+    color: inherit;
+    font-weight: bold;
+    text-align: right;
+    display: inline-block;
+    width: 100%;
 }
 
 .logo {
-	float: left;
+    float: left;
 }
 
 .logo img {
-	max-height: 261px;
-	filter: alpha(opacity=60);
- 	opacity: .6;
+    max-height: 261px;
+    filter: alpha(opacity=60);
+    opacity: .6;
 }
 
 .title {
-	color: #34495E;
-	float: right;
+    color: #34495E;
+    float: right;
 }

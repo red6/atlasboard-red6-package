@@ -1,33 +1,33 @@
 
 .name-container {
-	width: 100%;
-	display: table;
+    width: 100%;
+    display: table;
 }
 
 .text {
-	display: table-cell;
+    display: table-cell;
 }
 
 .icon {
-	display: table-cell;
-	vertical-align: middle;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .icon img {
-	filter: alpha(opacity=60);
- 	opacity: .6;
-	padding: 0 30px 0 30px;
+    filter: alpha(opacity=60);
+    opacity: .6;
+    padding: 0 30px 0 30px;
 }
 
 .name {
-	font-size: 110px;
-	font-weight: bold;
+    font-size: 110px;
+    font-weight: bold;
 }
 
 .dueDate {
     padding-left: 5px;
-	font-size: 60px;
-	font-weight: bold;
-	color: #E08283;
+    font-size: 60px;
+    font-weight: bold;
+    color: #E08283;
 }
 

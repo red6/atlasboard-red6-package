@@ -1,69 +1,69 @@
 .content {
-	width: 100%;
-	display: inline-block;
+    width: 100%;
+    display: inline-block;
 }
 
 #technicalDebt-container {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .content h1 {
-	font-size: 50px;
+    font-size: 50px;
 }
 
 .name-container {
-	width: 100%;
-	display: table;
+    width: 100%;
+    display: table;
 }
 
 .metrics {
-/*	position: absolute; */
-	display: table-cell;
-	font-size: 42px;
+    /*	position: absolute; */
+    display: table-cell;
+    font-size: 42px;
 }
 
 .icon img {
-	filter: alpha(opacity=60);
- 	opacity: .6;
- 	width: 100%;
-	padding: 0 30px 0 30px;
+    filter: alpha(opacity=60);
+    opacity: .6;
+    width: 100%;
+    padding: 0 30px 0 30px;
 }
 
 .blocker-alert {
-	display: table-cell;
-	font-weight: bold;
-	font-size: 42px;
-	width: 20%;
+    display: table-cell;
+    font-weight: bold;
+    font-size: 42px;
+    width: 20%;
 }
 
 .value-blocker {
-	color: #CF000F;
-	font-size: 110px;
+    color: #CF000F;
+    font-size: 110px;
 }
 
-.value  {
-	font-weight: bold;
-	font-size: 62px;
+.value {
+    font-weight: bold;
+    font-size: 62px;
 }
 
 .value-0 {
-	margin-right: 5px;
-	color: #ABB7B7;
+    margin-right: 5px;
+    color: #ABB7B7;
 }
 
 .value-1 {
-	margin-right: 5px;
-	color: #5C97BF;
+    margin-right: 5px;
+    color: #5C97BF;
 }
 
 .value-2 {
-	color: #EB9532;
+    color: #EB9532;
 }
 
 .direction-up {
-	color: #03A678;
+    color: #03A678;
 }
 
 .direction-down {
-	color: #D64541;
+    color: #D64541;
 }
