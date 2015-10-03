@@ -12,6 +12,7 @@ p.blockquote {
     width: 100%;
     font-size: 3.4em;
     text-align: left;
-    padding: 30px;
+    padding: 20px 30px 0 30px;
+    margin: 0;
     vertical-align: middle;
 }
