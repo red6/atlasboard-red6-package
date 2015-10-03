@@ -30,6 +30,12 @@ Shows the latest build results from [Jenkins](http://jenkins-ci.org).
 }
 ```
 
+### Chuck Norris Joke
+
+Shows a Chuck Norris Joke from the [Internet Chuck Norris Database](http://www.icndb.com/).
+
+![](screenshots/chucknorris_joke.png?raw=true)
+
 ### Datetime
 Shows the current time and date.
 
