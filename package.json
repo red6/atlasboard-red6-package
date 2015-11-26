@@ -9,7 +9,7 @@
     "url": ""
   },
   "dependencies": {
-    "async": "1.4.2",
+    "async": "1.5.0",
     "cron": "1.0.9",
     "cheerio": "0.19.0",
     "underscore": "1.8.3",
@@ -18,8 +18,8 @@
     "ical": "~0.4.0"
   },
   "devDependencies": {
-    "mocha": "2.2.5",
-    "sinon": "1.15.4"
+    "mocha": "2.3.4",
+    "sinon": "1.17.2"
   },
   "engines": {
     "atlasboard": ">=0.5.6"
