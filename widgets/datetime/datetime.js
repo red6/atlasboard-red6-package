@@ -20,7 +20,7 @@ widget = {
           }
 
           var datetimeData = {
-            time: time.lang(data.lang).format('HH:mm'),
+            time: moment().lang(data.lang).format('LT'),
             date: moment().lang(data.lang).format('L')
           };
 
