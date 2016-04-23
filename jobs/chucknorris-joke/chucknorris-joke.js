@@ -1,8 +1,7 @@
 'use strict'
 
 module.exports = function (config, dependencies, job_callback) {
-    var _ = dependencies.underscore;
-
+    
     var options = {
         url: 'http://api.icndb.com/jokes/random',
         rejectUnauthorized: false,
