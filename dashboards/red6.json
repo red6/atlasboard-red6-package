@@ -15,7 +15,7 @@
     "sonar": {
       "interval": 6000,
       "serverUrl": "http://nemo.sonarqube.org",
-      "resource": "org.codehaus.sonar:sonar"
+      "resource": "angularjs"
     },
     "milestone-countdown": {
       "interval": 60000,
@@ -26,7 +26,7 @@
     "jenkins-builds": {
       "serverUrl": "https://builds.apache.org/",
       "interval": 60000,
-      "job": "ActiveMQ",
+      "job": "Lucene-Artifacts-master",
       "lang": "en"
     },
     "project-header": {
