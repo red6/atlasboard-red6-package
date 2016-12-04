@@ -18,8 +18,8 @@
     "ical": "~0.5.0"
   },
   "devDependencies": {
-    "mocha": "2.3.4",
-    "sinon": "1.17.4"
+    "mocha": "3.2.0",
+    "sinon": "1.17.6"
   },
   "engines": {
     "atlasboard": ">=1.1.0"
