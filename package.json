@@ -9,7 +9,7 @@
     "url": ""
   },
   "dependencies": {
-    "async": "1.5.2",
+    "async": "2.1.4",
     "cron": "1.1.10",
     "cheerio": "0.22.0",
     "underscore": "1.8.3",
