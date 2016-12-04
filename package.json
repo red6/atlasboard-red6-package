@@ -2,7 +2,7 @@
   "author": "red6",
   "name": "atlasboard-red6-package",
   "description": "red6 package for Atlasboard",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "",
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
     "sinon": "1.17.2"
   },
   "engines": {
-    "atlasboard": ">=0.5.6"
+    "atlasboard": ">=1.1.0"
   },
   "contributors": [
     {
