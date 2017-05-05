@@ -2,27 +2,27 @@
   "author": "red6",
   "name": "atlasboard-red6-package",
   "description": "red6 package for Atlasboard",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "",
   "repository": {
     "type": "git",
     "url": ""
   },
   "dependencies": {
-    "async": "1.5.0",
-    "cron": "1.0.9",
-    "cheerio": "0.19.0",
+    "async": "2.1.4",
+    "cron": "1.1.1",
+    "cheerio": "0.22.0",
     "underscore": "1.8.3",
-    "memory-cache": "0.1.4",
-    "moment": "2.10.6",
-    "ical": "~0.4.0"
+    "memory-cache": "0.1.6",
+    "moment": "2.17.0",
+    "ical": "~0.5.0"
   },
   "devDependencies": {
-    "mocha": "2.3.4",
-    "sinon": "1.17.2"
+    "mocha": "3.2.0",
+    "sinon": "1.17.6"
   },
   "engines": {
-    "atlasboard": ">=0.5.6"
+    "atlasboard": ">=1.1.0"
   },
   "contributors": [
     {
