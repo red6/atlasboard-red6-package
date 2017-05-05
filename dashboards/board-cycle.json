@@ -1,4 +1,5 @@
 {
+  "enabled" : false,
   "layout": {
     "title": false,
     "customJS": [],
