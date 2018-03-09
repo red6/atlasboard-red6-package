@@ -1,5 +1,3 @@
-[![Dependency Status](https://www.versioneye.com/user/projects/55cda1099a2f09001c00001d/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55cda1099a2f09001c00001d)
-
 Atlasboard red6 Package
 =======================
 
