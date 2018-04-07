@@ -19,7 +19,7 @@ module.exports = function (config, dependencies, job_callback) {
 
   var end = moment(config.dueDate);
   if (config.lang) {
-    end = end.lang(config.lang)
+    end = end.locale(config.lang)
   }
   var dueDateStr = end.from(moment());
 
