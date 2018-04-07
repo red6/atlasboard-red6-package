@@ -15,7 +15,7 @@
  */
 
 module.exports = function (config, dependencies, job_callback) {
-  var metricsUrl = config.serverUrl + '/api/resources?metrics=ncloc,coverage,sqale_index,tests,blocker_violations&resource=' + config.resource;
+  var metricsUrl = config.serverUrl + '/api/measures/component?metricKeys=ncloc,coverage,sqale_index,tests,blocker_violations,critical_violations&componentKey=' + config.resource;
   var credentials = config.credentials;
   var logger = dependencies.logger;
   var _ = dependencies.underscore;
@@ -26,8 +26,8 @@ module.exports = function (config, dependencies, job_callback) {
     return obj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
   };
 
-  function getMetric(metricsData, key) {
-    return _.first(_.where(metricsData.msr, {key: key}))
+  function getMetric(measures, key) {
+    return _.first(_.where(measures, {metric: key}))
   };
 
   function directionToString(direction) {
@@ -45,7 +45,7 @@ module.exports = function (config, dependencies, job_callback) {
     }
 
     return {
-      value: metric.val.toFixed(),
+      value: metric.value,
       direction: directionToString(metric.direction)
     };
   };
@@ -57,7 +57,7 @@ module.exports = function (config, dependencies, job_callback) {
     }
 
     return {
-      value: moment.duration(metric.val, "minutes").humanize(),
+      value: moment.duration(metric.value, "minutes").humanize(),
       direction: directionToString(metric.direction)
     };
   };
@@ -66,7 +66,7 @@ module.exports = function (config, dependencies, job_callback) {
     var metric = getMetric(metricsData, metricId);
 
     return {
-      value: formatWithThousandSeparator(metric.val),
+      value: formatWithThousandSeparator(metric.value),
       direction: directionToString(metric.direction)
     };
   };
@@ -84,21 +84,21 @@ module.exports = function (config, dependencies, job_callback) {
     options.headers.Authorization = 'Basic ' + authorizationHash;
   }
 
-  dependencies.easyRequest.JSON(options, function (error, metricsDataSets) {
+  dependencies.easyRequest.JSON(options, function (error, metricsData) {
     if (error) {
       var err_msg = error || "ERROR: Couldn't access the metrics at " + options.url;
       logger.error(err_msg);
       return job_callback(err_msg);
     }
 
-    var metricsData = _.first(metricsDataSets);
+    var measures = metricsData.component.measures;
 
     var data = {
-      projectName: metricsData.name,
-      coverage: getCoverage(metricsData),
-      blockerCount: getNumberFormattedMetric(metricsData, "blocker_violations"),
-      linesOfCode: getNumberFormattedMetric(metricsData, "ncloc"),
-      technicalDebt: getTechnicalDebt(metricsData)
+      projectName: metricsData.component.name,
+      coverage: getCoverage(measures),
+      blockerCount: getNumberFormattedMetric(measures, "blocker_violations"),
+      linesOfCode: getNumberFormattedMetric(measures, "ncloc"),
+      technicalDebt: getTechnicalDebt(measures)
     };
 
     job_callback(null, data);
