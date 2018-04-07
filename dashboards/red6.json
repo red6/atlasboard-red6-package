@@ -14,19 +14,19 @@
   "config": {
     "sonar": {
       "interval": 6000,
-      "serverUrl": "http://nemo.sonarqube.org",
+      "serverUrl": "https://sonarcloud.io",
       "resource": "angularjs"
     },
     "milestone-countdown": {
       "interval": 60000,
       "name": "R1",
-      "dueDate": "2014-09-31",
+      "dueDate": "2018-12-31",
       "lang": "en"
     },
     "jenkins-builds": {
-      "serverUrl": "https://builds.apache.org/",
+      "serverUrl": "https://jenkins.mono-project.com",
       "interval": 60000,
-      "job": "Lucene-Artifacts-master",
+      "job": "test-mono-mainline",
       "lang": "en"
     },
     "project-header": {
