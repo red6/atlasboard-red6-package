@@ -16,7 +16,7 @@
 
 module.exports = function (config, dependencies, job_callback) {
 
-  var data = {
+  let data = {
     lang: config.lang,
     differenceUTC: config.differenceUTC
   };

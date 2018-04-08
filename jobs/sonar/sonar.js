@@ -15,11 +15,11 @@
  */
 
 module.exports = function (config, dependencies, job_callback) {
-  var metricsUrl = config.serverUrl + '/api/measures/component?metricKeys=ncloc,coverage,sqale_index,tests,blocker_violations,critical_violations&componentKey=' + config.resource;
-  var credentials = config.credentials;
-  var logger = dependencies.logger;
-  var _ = dependencies.underscore;
-  var moment = dependencies.moment;
+  let metricsUrl = `${config.serverUrl}/api/measures/component?metricKeys=ncloc,coverage,sqale_index,tests,blocker_violations,critical_violations&componentKey=${config.resource}`;
+  let credentials = config.credentials;
+  let logger = dependencies.logger;
+  let _ = dependencies.underscore;
+  let moment = dependencies.moment;
 
   function formatWithThousandSeparator(obj) {
     var separator = '.'; // ','
@@ -39,7 +39,7 @@ module.exports = function (config, dependencies, job_callback) {
   };
 
   function getCoverage(metricsData) {
-    var metric = getMetric(metricsData, "coverage");
+    let metric = getMetric(metricsData, 'coverage');
     if (!metric) {
       return null;
     }
@@ -51,19 +51,19 @@ module.exports = function (config, dependencies, job_callback) {
   };
 
   function getTechnicalDebt(metricsData) {
-    var metric = getMetric(metricsData, "sqale_index");
+    let metric = getMetric(metricsData, 'sqale_index');
     if (!metric) {
       return null;
     }
 
     return {
-      value: moment.duration(metric.value, "minutes").humanize(),
+      value: moment.duration(metric.value, 'minutes').humanize(),
       direction: directionToString(metric.direction)
     };
   };
 
   function getNumberFormattedMetric(metricsData, metricId) {
-    var metric = getMetric(metricsData, metricId);
+    let metric = getMetric(metricsData, metricId);
 
     return {
       value: formatWithThousandSeparator(metric.value),
@@ -75,29 +75,29 @@ module.exports = function (config, dependencies, job_callback) {
     url: metricsUrl,
     rejectUnauthorized: false,
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     }
   };
 
   if (config.globalAuth && config.globalAuth[credentials] && config.globalAuth[credentials].username && config.globalAuth[credentials].password) {
-    var authorizationHash = new Buffer(config.globalAuth[credentials].username + ':' + config.globalAuth[credentials].password).toString('base64');
-    options.headers.Authorization = 'Basic ' + authorizationHash;
+    let authorizationHash = new Buffer(config.globalAuth[credentials].username + ':' + config.globalAuth[credentials].password).toString('base64');
+    options.headers.Authorization = `Basic ${authorizationHash}`;
   }
 
   dependencies.easyRequest.JSON(options, function (error, metricsData) {
     if (error) {
-      var err_msg = error || "ERROR: Couldn't access the metrics at " + options.url;
+      let err_msg = error || `ERROR: Couldn't access the metrics at ${options.url}`;
       logger.error(err_msg);
       return job_callback(err_msg);
     }
 
-    var measures = metricsData.component.measures;
+    let measures = metricsData.component.measures;
 
-    var data = {
+    let data = {
       projectName: metricsData.component.name,
       coverage: getCoverage(measures),
-      blockerCount: getNumberFormattedMetric(measures, "blocker_violations"),
-      linesOfCode: getNumberFormattedMetric(measures, "ncloc"),
+      blockerCount: getNumberFormattedMetric(measures, 'blocker_violations'),
+      linesOfCode: getNumberFormattedMetric(measures, 'ncloc'),
       technicalDebt: getTechnicalDebt(measures)
     };
 

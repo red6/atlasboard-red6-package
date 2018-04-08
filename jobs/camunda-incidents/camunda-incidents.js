@@ -14,45 +14,45 @@
  * limitations under the License.
  */
 
-var _ = require('underscore'),
+const _ = require('underscore'),
   moment = require('moment');
 
 module.exports = function (config, dependencies, job_callback) {
-  var logger = dependencies.logger;
-  var credentials = config.credentials;
+  let logger = dependencies.logger;
+  let credentials = config.credentials;
 
-  var url = "http://localhost:18080/engine-rest/engine/default/incident?sortBy=incidentTimestamp&sortOrder=desc";
+  let url = 'http://localhost:18080/engine-rest/engine/default/incident?sortBy=incidentTimestamp&sortOrder=desc';
 
-  var options = {
+  let options = {
     url: url,
     rejectUnauthorized: false,
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     }
   };
 
   if (config.globalAuth && config.globalAuth[credentials] && config.globalAuth[credentials].username && config.globalAuth[credentials].password) {
-    var authorizationHash = new Buffer(config.globalAuth[credentials].username + ':' + config.globalAuth[credentials].password).toString('base64');
-    options.headers.Authorization = 'Basic ' + authorizationHash;
+    let authorizationHash = new Buffer(config.globalAuth[credentials].username + ':' + config.globalAuth[credentials].password).toString('base64');
+    options.headers.Authorization = `Basic ${authorizationHash}`;
   }
 
   dependencies.easyRequest.JSON(options, function (error, incidentsData) {
     if (error) {
-      var err_msg = error || "ERROR: Couldn't access incidents at " + options.url;
+      let err_msg = error || `ERROR: Couldn't access incidents at ${options.url}`;
       logger.error(err_msg);
       return job_callback(err_msg);
     }
 
     // Restrict to root causes where id = rootCauseIncidentId
 
-    var data = {
+    let data = {
       count: incidentsData.length
     };
 
     job_callback(null, data);
   });
 
-  var data = {
+  let data = {
   };
 
   job_callback(null, data);

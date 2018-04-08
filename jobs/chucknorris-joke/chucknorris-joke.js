@@ -18,18 +18,18 @@
 
 module.exports = function (config, dependencies, job_callback) {
     
-    var options = {
+    let options = {
         url: 'http://api.icndb.com/jokes/random',
         rejectUnauthorized: false,
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json'
         }
     };
     
     if (config.globalAuth && config.globalAuth[config.credentials]) {
-        var authorizationHash = new Buffer(config.globalAuth[config.credentials].username + 
+        let authorizationHash = new Buffer(config.globalAuth[config.credentials].username + 
             ':' + config.globalAuth[config.credentials].password).toString('base64');
-        options.headers.Authorization = 'Basic ' + authorizationHash;
+        options.headers.Authorization = `Basic ${authorizationHash}`;
     }
 
     if (config.proxy) {
@@ -45,4 +45,3 @@ module.exports = function (config, dependencies, job_callback) {
     });
 
 };
-

@@ -15,9 +15,9 @@
  */
 
 module.exports = function (config, dependencies, job_callback) {
-  var moment = dependencies.moment;
+  let moment = dependencies.moment;
 
-  var end = moment(config.dueDate);
+  let end = moment(config.dueDate);
   if (config.lang) {
     end = end.locale(config.lang)
   }

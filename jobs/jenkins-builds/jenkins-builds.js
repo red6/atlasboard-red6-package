@@ -15,17 +15,17 @@
  */
 
 module.exports = function (config, dependencies, job_callback) {
-  var async = require('async');
-  var logger = dependencies.logger;
-  var moment = dependencies.moment;
-  var _ = dependencies.underscore;
+  let async = require('async');
+  let logger = dependencies.logger;
+  let moment = dependencies.moment;
+  let _ = dependencies.underscore;
 
   function getBuildInfos(build, callback) {
-    var options = {
-      url: config.serverUrl + '/job/' + config.job + '/' + build.number + '/api/json',
+    let options = {
+      url: `${config.serverUrl}/job/${config.job}/${build.number}/api/json`,
       rejectUnauthorized: false,
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       }
     };
 
@@ -35,24 +35,24 @@ module.exports = function (config, dependencies, job_callback) {
     }
 
     dependencies.easyRequest.JSON(options, function (error, rawBuildData) {
-      var buildTime = moment(rawBuildData.timestamp);
+      let buildTime = moment(rawBuildData.timestamp);
       if (config.lang) {
         buildTime = buildTime.locale(config.lang)
       }
 
-      var fullName = rawBuildData.fullDisplayName;
+      let fullName = rawBuildData.fullDisplayName;
       if (config.removeRegex) {
         if (_.isArray(config.removeRegex)) {
           _.each(config.removeRegex, function (singleRemoveRegex) {
-            fullName = fullName.replace(new RegExp(singleRemoveRegex), "");
+            fullName = fullName.replace(new RegExp(singleRemoveRegex), '');
           });
 
         } else {
-          fullName = rawBuildData.fullDisplayName.replace(new RegExp(config.removeRegex), "");
+          fullName = rawBuildData.fullDisplayName.replace(new RegExp(config.removeRegex), '');
         }
       }
 
-      var buildData = {
+      let buildData = {
         fullName: fullName,
         number: build.number,
         timeAgo: buildTime.fromNow()
@@ -66,29 +66,28 @@ module.exports = function (config, dependencies, job_callback) {
     });
   };
 
-  var jenkinsJobUrl = config.serverUrl + '/job/' + config.job + '/api/json'
+  let jenkinsJobUrl = `${config.serverUrl}/job/${config.job}/api/json`
+  let numberOfJobs = config.numberOfJobs || 3;
 
-  var numberOfJobs = config.numberOfJobs || 3;
-
-  var options = {
+  let options = {
     url: jenkinsJobUrl,
     rejectUnauthorized: false,
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     }
   };
 
   dependencies.easyRequest.JSON(options, function (error, jobData) {
     if (error) {
-      var err_msg = error || "ERROR: Couldn't access the job at " + options.url;
+      let err_msg = error || `ERROR: Couldn't access the job at ${options.url}`;
       logger.error(err_msg);
       return job_callback(err_msg);
     }
 
-    var lastBuilds = jobData.builds.slice(0, Math.min(numberOfJobs, jobData.builds.length));
+    let lastBuilds = jobData.builds.slice(0, Math.min(numberOfJobs, jobData.builds.length));
 
     async.map(lastBuilds, getBuildInfos, function (err, lastBuildsInfos) {
-      var data = {
+      let data = {
         name: jobData.displayName,
         builds: lastBuildsInfos
       };
