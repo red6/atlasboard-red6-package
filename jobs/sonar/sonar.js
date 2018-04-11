@@ -16,6 +16,7 @@
 
 module.exports = function (config, dependencies, job_callback) {
   let metricsUrl = `${config.serverUrl}/api/measures/component?metricKeys=ncloc,coverage,sqale_index,tests,blocker_violations,critical_violations&componentKey=${config.resource}`;
+  let dashboardUrl = `${config.serverUrl}/dashboard?id=${config.resource}`
   let credentials = config.credentials;
   let logger = dependencies.logger;
   let _ = dependencies.underscore;
@@ -95,6 +96,7 @@ module.exports = function (config, dependencies, job_callback) {
 
     let data = {
       projectName: metricsData.component.name,
+      dashboardUrl: dashboardUrl,
       coverage: getCoverage(measures),
       blockerCount: getNumberFormattedMetric(measures, 'blocker_violations'),
       linesOfCode: getNumberFormattedMetric(measures, 'ncloc'),

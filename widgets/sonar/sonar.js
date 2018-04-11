@@ -29,8 +29,7 @@ widget = {
       }
     };
 
-    $('.projectName', el).text(data.projectName);
-
+    $('.projectName', el).html('<a href="' + data.dashboardUrl + '" target="_blank">' + data.projectName + '</a>');
 
     if (data.coverage) {
       $('#coverage-container').show();
